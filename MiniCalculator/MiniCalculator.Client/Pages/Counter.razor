@@ -1,19 +1,85 @@
-﻿@page "/counter"
+﻿@page "/miniCalculator"
 @rendermode InteractiveWebAssembly
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Mini Calculator</PageTitle>
 
-<h1>Counter</h1>
+<h1>Mini Calculator</h1>
 
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+
+<table border="1">
+    <tr>
+        <th>A</th>
+        <th>+</th>
+        <th>B</th>
+        <th>=</th>
+        <th>Result</th>
+    </tr>
+    <tr>
+        <td>
+            @random1
+        </td>
+        <td>+</td>
+        <td>
+            @random1
+        </td>
+        <td>=</td>
+        <td class="input"><input type="text" placeholder="Result" /></td>
+    </tr>
+</table>
+
+
 @code {
     private int currentCount = 0;
+
+    public int random1 = new Random().Next(1, 11);
+
+
+
+    public int Random1()
+    {
+        Random random1 = new Random();
+        return random1.Next(1, 11);
+    }
+
+    public bool compareResult()
+    {
+        var userInput = "";
+        var calculatedResult = "";
+
+        // think if for loop is nedeed;
+        
+            if (userInput == calculatedResult)
+            {
+                return true;//or a new row
+            }
+
+            else
+            {
+                return false;
+            }
+        
+        return false;
+    }
 
     private void IncrementCount()
     {
         currentCount++;
     }
+
+    //todo
+    /*
+    ok rename page Counter to MiniCalculator
+    ok change the name in the navMenu
+    ok table create few buttons and a basic method to test the relation HTML and @code
+    - create three methods that:
+    ok 1. generate math.random btw 0-10
+    2. generate +/- sign
+    3. generate math.random btw 0-10
+    4. result - calculate the random numbers  
+    5. Think to take the input and compare it with the result;
+    */
 }
